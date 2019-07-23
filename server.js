@@ -6,12 +6,12 @@ const path = require('path');
 const compression = require('compression');
 const app = express();
 
+app.use(compression()) //compressing dist folder 
+
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/angularEight'));
 
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
-
-app.use(compression()) //compressing dist folder 
 
 app.get('/*', function(req, res) {
     
